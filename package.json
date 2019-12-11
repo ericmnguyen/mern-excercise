@@ -1,0 +1,43 @@
+{
+  "name": "movies",
+  "version": "1.0.0",
+  "description": "Movie Collection",
+  "main": "index.js",
+  "dependencies": {
+    "@material-ui/core": "^4.7.2",
+    "@zeit/next-css": "^1.0.1",
+    "immutable": "^4.0.0-rc.12",
+    "jwt-decode": "^2.2.0",
+    "lodash": "^4.17.15",
+    "next": "^9.1.5",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "clean": "npm run test:clean && npm run build:clean",
+    "generate": "plop --plopfile internals/generators/index.js",
+    "lint": "npm run lint:js",
+    "lint:eslint": "eslint --ignore-path .gitignore",
+    "lint:eslint:fix": "eslint --ignore-path .gitignore --ignore-pattern internals/scripts --fix",
+    "eslint:fix": "eslint -- . --ignore-path .gitignore --fix",
+    "lint:js": "npm run lint:eslint -- . ",
+    "pretest": "npm run test:clean && npm run lint",
+    "test:clean": "rimraf ./coverage",
+    "test": "cross-env NODE_ENV=test jest --coverage",
+    "test:watch": "cross-env NODE_ENV=test jest --watchAll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nathanmng/mern-excercise.git"
+  },
+  "author": "Nhat Nguyen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nathanmng/mern-excercise/issues"
+  },
+  "homepage": "https://github.com/nathanmng/mern-excercise#readme"
+}

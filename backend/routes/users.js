@@ -1,4 +1,4 @@
-const router =  require('express').Router();
+const router = require('express').Router();
 let User = require('../models/user.model');
 
 router.route('/').get((req, res) => {
@@ -8,6 +8,7 @@ router.route('/').get((req, res) => {
 });
 
 router.route('/add').post((req, res) => {
+  console.log('body', req);
   const username = req.body.username;
 
   const newUser = new User({ username });
@@ -19,7 +20,6 @@ router.route('/add').post((req, res) => {
 
 router.route('/delete').delete((req, res) => {
   console.log('delete', req);
-  // return req.body;
   // const username = req.body.username;
 
   // const newUser = new User({ username });

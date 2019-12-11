@@ -1,10 +1,14 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Document, { Head, Main, NextScript } from 'next/document'
 
 function App() {
   return (
     <div className="App">
+      <Head>
+        <link rel="stylesheet" href="/_next/static/style.css" />
+      </Head>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -19,6 +23,10 @@ function App() {
           Learn React
         </a>
       </header>
+      <body>
+        <Main />
+        <NextScript />
+      </body>
     </div>
   );
 }
