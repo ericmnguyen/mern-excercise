@@ -5,6 +5,8 @@ import Box from '@material-ui/core/Box';
 import MuiLink from '@material-ui/core/Link';
 import ProTip from '../src/ProTip';
 import Link from '../src/Link';
+import Home from '../containers/Home';
+import App from '../src/App';
 
 function Copyright() {
   return (
@@ -29,7 +31,8 @@ export default function Index() {
         <Link href="/about" color="secondary">
           Go to the about page
         </Link>
-        <ProTip />
+        <App />
+        <Home />
         <Copyright />
       </Box>
     </Container>
