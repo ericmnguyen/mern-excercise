@@ -4,9 +4,7 @@ import enhancer from './withEnhance';
 import { compose, onlyUpdateForPropTypes, setPropTypes } from 'recompose';
 
 const Home = (props) => {
-  return (
-    <div>abc</div>
-  );
-}
+  return <div>Home page</div>;
+};
 
 export default enhancer(Home);

@@ -1,0 +1,40 @@
+.login {
+  width: 100%;
+  text-align: center;
+  display: table;
+  &__form {
+    border: 2px solid white;
+    border-radius: 13px;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 20vh;
+    background-color: transparent;
+    padding: 40px 25px;
+    display: inline-table;
+    text-align: center;
+    vertical-align: middle;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  &__title {
+    color: white;
+    font-style: italic;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+  &__email {
+    width: 100%;
+    margin: 8px 0px !important;
+  }
+  &__password {
+    width: 100%;
+    margin: 8px 0px !important;
+  }
+  &__register-button {
+    margin: 8px !important;
+    width: 100% !important;
+  }
+  &__login-button {
+    margin: 8px !important;
+    width: 100% !important;
+    background-color: var(--color9) !important;
+  }
+}
