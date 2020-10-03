@@ -13,7 +13,7 @@ import Footer from '../containers/Footer';
 export default function Index() {
   return (
     <div className='classes.root'>
-      <Login />
+      <Home />
       <Footer />
     </div>
   );

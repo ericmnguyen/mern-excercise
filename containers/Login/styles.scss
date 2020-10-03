@@ -7,18 +7,13 @@
     border-radius: 13px;
     margin-left: 25%;
     margin-right: 25%;
-    margin-top: 20vh;
+    margin-top: 13vh;
     background: linear-gradient(to left, #0066cc 0%, #00cc66 100%);
     padding: 40px 25px;
     display: inline-table;
     text-align: center;
     vertical-align: middle;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  }
-  &__logo {
-    position: absolute;
-    left: calc(45% - 220px);
-    bottom: 71%;
   }
   &__title {
     color: white;
@@ -27,11 +22,11 @@
   }
   &__email {
     width: 100%;
-    margin: 8px 0px !important;
+    // margin: 8px 0px !important;
   }
   &__password {
     width: 100%;
-    margin: 8px 0px !important;
+    // margin: 8px 0px !important;
   }
   &__register-button {
     margin: 8px !important;
