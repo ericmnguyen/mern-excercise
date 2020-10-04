@@ -1,5 +1,7 @@
 import React, { Component, useState } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { createStructuredSelector } from 'reselect';
 import { useRouter } from 'next/router';
 import {
   TextField,

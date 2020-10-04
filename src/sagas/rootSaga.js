@@ -1,17 +1,17 @@
 import { takeEvery } from 'redux-saga/effects';
 
 // FETCH_USERS
-function* fetchUsers({ param }) {
+export default function* fetchUsers({ param }) {
   const url = '';
   try {
     const data = yield call(param, url);
-    yield put({ type: 'FETCH_SUCCEEDED', data });
+    yield put({ type: 'GET_ALL_USERS_SUCCESS', data });
   } catch (error) {
-    yield put({ type: 'FETCH_FAILED', error });
+    yield put({ type: 'GET_ALL_USERS_FAIL', error });
   }
 }
 
 // use them in parallel
 export default function* rootSaga() {
-  yield takeEvery('FETCH_USERS', fetchUsers);
+  yield takeEvery('GET_ALL_USERS', fetchUsers);
 }
