@@ -12,12 +12,12 @@ import InputIcon from '@material-ui/icons/Input';
 import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { Formik, Form, Field } from 'formik';
+import { createStore, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 import * as Yup from 'yup';
 import './styles.scss';
 
 const Login = (props) => {
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
   const router = useRouter();
 
   const SigninSchema = Yup.object().shape({
@@ -30,7 +30,7 @@ const Login = (props) => {
 
   const handleLogin = (props) => {
     console.log('login submit', props);
-    router.push('/home');
+    // router.push('/home');
   };
 
   return (

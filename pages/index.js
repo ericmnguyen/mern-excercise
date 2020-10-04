@@ -6,9 +6,8 @@ import MuiLink from '@material-ui/core/Link';
 import ProTip from '../src/ProTip';
 import Link from '../src/Link';
 import App from '../src/App';
-import Home from '../containers/Home';
-import Login from '../containers/Login';
-import Footer from '../containers/Footer';
+import Login from '../src/containers/Login';
+import Footer from '../src/containers/Footer';
 
 export default function Index() {
   return (
