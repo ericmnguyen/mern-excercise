@@ -1,7 +1,15 @@
 export function userAction(params) {
-  type: 'UPDATE_USER', params;
+  return { type: 'UPDATE_USER', params };
 }
 
 export function getAllUsers() {
-  type: 'GET_ALL_USERS';
+  return { type: 'GET_ALL_USERS' };
+}
+
+export function setUsername(param) {
+  return { type: 'SET_USER_NAME', param };
+}
+
+export function getUserInfo(params) {
+  return { type: 'GET_USER_INFO', params };
 }

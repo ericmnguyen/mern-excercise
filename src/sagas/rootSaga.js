@@ -1,17 +1,18 @@
-import { takeEvery } from 'redux-saga/effects';
+import { takeEvery, takeLatest } from 'redux-saga/effects';
 
 // FETCH_USERS
-export default function* fetchUsers({ param }) {
+export function* getUser(param) {
   const url = '';
+  console.log('praammm', param);
   try {
     const data = yield call(param, url);
-    yield put({ type: 'GET_ALL_USERS_SUCCESS', data });
+    yield put({ type: 'GET_USER_INFO_SUCCESS', data });
   } catch (error) {
-    yield put({ type: 'GET_ALL_USERS_FAIL', error });
+    yield put({ type: 'GET_USER_INFO_FAIL', error });
   }
 }
 
 // use them in parallel
-export default function* rootSaga() {
-  yield takeEvery('GET_ALL_USERS', fetchUsers);
+export function* rootSaga() {
+  yield takeLatest('GET_USER_INFO', getUser);
 }

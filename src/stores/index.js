@@ -3,7 +3,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { reducers } from '../reducers';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
-// import { rootSaga } from '../sagas/rootSaga';
+import { rootSaga } from '../sagas/rootSaga';
 
 // create a store creator
 let store;
@@ -18,7 +18,7 @@ function initStore(preloadedState = {}) {
   );
 }
 
-// sagaMiddleware.run(rootSaga);
+sagaMiddleware.run(rootSaga);
 
 export const initializeStore = (preloadedState) => {
   let _store = store ?? initStore(preloadedState);
