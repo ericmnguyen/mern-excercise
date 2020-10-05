@@ -1,12 +1,10 @@
 import App from 'next/app';
 import withRedux from 'next-redux-wrapper';
 import { Provider } from 'react-redux';
-import { useStore } from '../src/stores';
+import { store } from '../src/stores';
 import '../styles/global.scss';
 
 export default function MyApp({ Component, pageProps }) {
-  const store = useStore(pageProps.initialReduxState);
-
   return (
     <Provider store={store}>
       <Component {...pageProps} />

@@ -1,11 +1,12 @@
-import { takeEvery, takeLatest } from 'redux-saga/effects';
+import { takeEvery, takeLatest, put, call } from 'redux-saga/effects';
 
 // FETCH_USERS
 export function* getUser(param) {
-  const url = '';
+  const url = 'http://localhost:5000';
   console.log('praammm', param);
   try {
-    const data = yield call(param, url);
+    const data = yield call(fetch, url);
+    console.log('data', data);
     yield put({ type: 'GET_USER_INFO_SUCCESS', data });
   } catch (error) {
     yield put({ type: 'GET_USER_INFO_FAIL', error });

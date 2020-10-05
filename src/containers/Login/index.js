@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { Login } from './Login';
-import { setUsername } from '../../actions/userAction';
+import { setUsername, getUserInfo } from '../../actions/userAction';
 import './styles.scss';
 
 const mapStateToProps = ({ userReducer }) => ({
