@@ -13,3 +13,7 @@ export function setUsername(param) {
 export function getUserInfo(params) {
   return { type: 'GET_USER_INFO', params };
 }
+
+export function getUserInfoSuccess(data) {
+  return { type: 'GET_USER_INFO_SUCCESS', data };
+}
