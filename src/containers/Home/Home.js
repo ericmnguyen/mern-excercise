@@ -1,28 +1,7 @@
-import React, { Component, useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { createStructuredSelector } from 'reselect';
-import { useRouter } from 'next/router';
-import {
-  TextField,
-  Button,
-  Grid,
-  Typography,
-  InputAdornment,
-  Paper,
-  Card,
-  CardContent,
-  Container,
-  Divider,
-} from '@material-ui/core';
-import InputIcon from '@material-ui/icons/Input';
-import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { Formik, Form, Field } from 'formik';
-import { createStore, applyMiddleware } from 'redux';
-import createSagaMiddleware from 'redux-saga';
-import * as Yup from 'yup';
+import React, { useEffect } from 'react';
+import { Container, Divider, Box } from '@material-ui/core';
 import './styles.scss';
+import SummaryBoxes from '../SummaryBoxes';
 
 export const Home = (props) => {
   useEffect(() => {
@@ -40,18 +19,8 @@ export const Home = (props) => {
           {props.summary?.Global?.TotalConfirmed}
         </div>
         <Divider variant='middle' />
-        <div className='covid-worldwide-summary'>
-          <Paper className='card-infected'>
-            <Typography color='textSecondary' gutterBottom>
-              Word of the Day
-            </Typography>
-          </Paper>
-          <Paper className='card-dead'>
-            <Typography color='textSecondary' gutterBottom>
-              Word of the Day
-            </Typography>
-          </Paper>
-        </div>
+        <SummaryBoxes {...props} />
+        <Divider variant='middle' />
       </Container>
     </div>
   );
