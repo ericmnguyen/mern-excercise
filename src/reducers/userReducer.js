@@ -1,19 +1,25 @@
 const initialState = {
   userName: '',
   password: '',
-  summaryData: {},
+  userInfo: {},
+  isVerify: true,
 };
 
 export const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'SET_USER_NAME':
-      return { ...state, userName: action.param };
     case 'GET_USER_INFO':
-      return { ...state, summaryData: {} };
+      return { ...state, userInfo: {}, loadingLogin: true };
     case 'GET_USER_INFO_SUCCESS':
-      return { ...state, summaryData: action.data };
+      return {
+        ...state,
+        userInfo: action.data,
+        loadingLogin: false,
+      };
     case 'GET_USER_INFO_FAIL':
       return state;
+    case 'FIELD_VERIFYING':
+      console.log('action', action.payload);
+      return { ...state, isVerify: action.payload };
     default:
       return state;
   }

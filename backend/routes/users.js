@@ -1,36 +1,36 @@
 // Filename: api-routes.js
 // Initialize express router
+const axios = require('axios');
 let router = require('express').Router();
 let userModel = require('../models/user.model');
 
 router.route('/').get((req, res) => {
-  try {
-    userModel
-      .find()
-      .exec()
-      .then((reponse) => res.send(reponse));
-  } catch (error) {
-    res.status(500).send(error);
-  }
+  userModel
+    .find()
+    .then((users) => res.json(users))
+    .catch((err) => res.status(400).json('Error: ' + err));
+});
+
+router.route('/').post((req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+
+  userModel
+    .findOne({ email, password })
+    .then((email) => res.json(email))
+    .catch((err) => res.status(400).json('Error: ' + err));
 });
 
 router.route('/add').post((req, res) => {
   const email = req.body.email;
   const password = req.body.password;
-  const newUser = new userModel({ email, password });
-  console.log('newUser', newUser);
-  newUser.save();
-  res.send('success');
-});
 
-router.route('/').post((req, res) => {
-  const email = req.body.email;
-  try {
-    var result = userModel.find((item) => item.email === email).exec();
-    res.send(result);
-  } catch (error) {
-    res.status(500).send(error);
-  }
+  const newUser = new userModel({ email, password });
+
+  newUser
+    .save()
+    .then(() => res.json('User added!'))
+    .catch((err) => res.status(400).json('Error: ' + err));
 });
 
 // router.route('/add').post((req, res) => {

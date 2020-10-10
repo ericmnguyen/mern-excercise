@@ -13,8 +13,14 @@ import Footer from '../src/containers/Footer';
 export default function Index() {
   return (
     <div className='classes.root'>
-      <Home />
-      <Footer />
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+        }}>
+        <Home />
+        <Footer />
+      </div>
     </div>
   );
 }

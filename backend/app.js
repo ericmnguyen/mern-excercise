@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
+const mongoose = require('mongoose');
 const axios = require('axios');
-const mongoose = require('mongodb');
 
 const exercisesRouter = require('./routes/exercises');
 const usersRouter = require('./routes/users');
@@ -20,13 +20,17 @@ const summaryUri = 'https://api.covid19api.com/summary';
 const countriesUri = 'https://api.covid19api.com/countries';
 
 const uri = process.env.ATLAS_URI;
-mongoose.connect((err) => {
-  const collection = client.db('coviddb').collection('users');
-  // perform actions on the collection object
-  app.use('/users', usersRouter);
-  client.close();
+mongoose.connect(uri, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+});
+const connection = mongoose.connection;
+connection.once('open', () => {
+  console.log('MongoDB database connection established successfully');
 });
 
+app.use('/users', usersRouter);
 app.use('/exercises', exercisesRouter);
 app.use('/movies', moviesRouter);
 
@@ -40,6 +44,7 @@ axios
     console.log(error);
   });
 app.get('/', (req, res) => res.send(data));
+app.post('/login', (req, res) => res.send());
 app.listen(port, () => {
   console.log('Server is running on port: ', port);
 });

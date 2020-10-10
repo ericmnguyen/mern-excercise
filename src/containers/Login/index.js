@@ -1,10 +1,15 @@
 import { connect } from 'react-redux';
 import { Login } from './Login';
+import { withFormik } from 'formik';
 import { setUsername, getUserInfo } from '../../actions/userAction';
 import './styles.scss';
 
-const mapStateToProps = ({ userReducer }) => ({
-  user: userReducer,
+const mapStateToProps = ({
+  userReducer: { isVerify, loadingLogin, userInfo },
+}) => ({
+  isVerify,
+  loadingLogin,
+  userInfo,
 });
 
 const mapDispatchToProps = (dispatch) => ({

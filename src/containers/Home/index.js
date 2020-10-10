@@ -1,10 +1,14 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import enhancer from './withEnhance';
-import { compose, onlyUpdateForPropTypes, setPropTypes } from 'recompose';
+import { connect } from 'react-redux';
+import { Home } from './Home';
+import { getSummary } from '../../actions/homeAction';
+import './styles.scss';
 
-const Home = (props) => {
-  return <div>Home page</div>;
-};
+const mapStateToProps = ({ homeReducer: { summary } }) => ({
+  summary,
+});
 
-export default enhancer(Home);
+const mapDispatchToProps = (dispatch) => ({
+  getSummary: () => dispatch(getSummary()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

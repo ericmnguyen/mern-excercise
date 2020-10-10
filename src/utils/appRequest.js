@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+export const basePath = 'http://localhost:5000';
+
 export function getAPI(url) {
   return axios.request({
     method: 'GET',

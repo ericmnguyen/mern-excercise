@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { createStructuredSelector } from 'reselect';
@@ -22,7 +22,11 @@ import './styles.scss';
 export const Login = (props) => {
   const router = useRouter();
 
-  console.log('uaerwar', props);
+  useEffect(() => {
+    if (props.userInfo?.email) {
+      router.push('/home');
+    }
+  }, [props.userInfo]);
 
   const SigninSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email').required('Required'),
@@ -34,11 +38,10 @@ export const Login = (props) => {
 
   const handleLogin = (value) => {
     const { getUserInfo } = props;
-    console.log('login submit', value);
     getUserInfo(value);
-    // router.push('/home');
   };
 
+  const wrongPasswordTxt = 'Email/password is incorrect. Please try again.';
   return (
     <div className='login'>
       <Formik
@@ -48,7 +51,7 @@ export const Login = (props) => {
         }}
         validationSchema={SigninSchema}
         onSubmit={handleLogin}>
-        {(props) => {
+        {(formikProps) => {
           const {
             values,
             touched,
@@ -59,7 +62,7 @@ export const Login = (props) => {
             handleBlur,
             handleSubmit,
             handleReset,
-          } = props;
+          } = formikProps;
           return (
             <Form
               className='login__form'
@@ -117,6 +120,9 @@ export const Login = (props) => {
                     }}
                     variant='outlined'
                   />
+                  {!props.isVerify && (
+                    <p className='login__verify'>{wrongPasswordTxt}</p>
+                  )}
                 </Grid>
                 <Grid item xs={12}>
                   <Button
@@ -124,7 +130,7 @@ export const Login = (props) => {
                     className='login__login-button'
                     variant='contained'
                     endIcon={<InputIcon />}
-                    // onClick={onClick}
+                    disabled={props.loadingLogin}
                     color='primary'>
                     Login
                   </Button>
