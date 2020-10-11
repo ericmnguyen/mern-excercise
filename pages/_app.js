@@ -1,4 +1,5 @@
 import App from 'next/app';
+import React, { useEffect } from 'react';
 import withRedux from 'next-redux-wrapper';
 import { Provider } from 'react-redux';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -6,6 +7,14 @@ import { store } from '../src/stores';
 import '../styles/global.scss';
 
 export default function MyApp({ Component, pageProps }) {
+  useEffect(() => {
+    // Remove the server-side injected CSS.
+    const jssStyles = document.querySelector('#jss-server-side');
+    if (jssStyles) {
+      jssStyles.parentElement.removeChild(jssStyles);
+    }
+  }, []);
+
   return (
     <Provider store={store}>
       <CssBaseline />

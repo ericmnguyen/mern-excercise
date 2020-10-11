@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
-import { Grid, Divider, Box } from '@material-ui/core';
+import React, { useState, useEffect } from 'react';
+import * as dayjs from 'dayjs';
+import { Grid, Divider, Box, TextField } from '@material-ui/core';
 import {
   AreaChart,
   Area,
@@ -10,6 +11,16 @@ import {
 } from 'recharts';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import './styles.scss';
+
+function countryToFlag(isoCode) {
+  return typeof String.fromCodePoint !== 'undefined'
+    ? isoCode
+        .toUpperCase()
+        .replace(/./g, (char) =>
+          String.fromCodePoint(char.charCodeAt(0) + 127397)
+        )
+    : isoCode;
+}
 
 const data = [
   {
@@ -39,13 +50,56 @@ const data = [
 ];
 
 export const SummaryCharts = (props) => {
+  const [selectedCountry, setSelectedCountry] = useState(null);
   const jsfiddleUrl = 'https://jsfiddle.net/alidingling/c1rLyqj1/';
+
+  useEffect(() => {
+    console.log('dayjjss', dayjs().add(-14, 'day').format('YYYY-MM-DD'));
+    props.getDailyTotals({ date: dayjs().format('YYYY-MM-DD') });
+  }, []);
+
+  const onChange = (e, newValue) => {
+    console.log('setSelectedCountry', newValue);
+    setSelectedCountry(newValue);
+    if (newValue) {
+      const params = {
+        code: newValue.CountryCode,
+        date: '2020-07-21',
+      };
+      props.getDailyCountry(params);
+    } else {
+      props.getDailyTotals({ date: dayjs().format('YYYY-MM-DD') });
+    }
+  };
 
   return (
     <div className='summary-charts'>
       <Grid container spacing={3}>
         <Grid item xs={6}>
-          abc
+          <Autocomplete
+            id='country-select-demo'
+            style={{ width: 300 }}
+            options={props.summary.Countries}
+            onChange={onChange}
+            autoHighlight
+            getOptionLabel={(option) => option.Country}
+            renderOption={(option) => (
+              <>
+                {option.Country} ({option.CountryCode})
+              </>
+            )}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label='Choose a country'
+                variant='outlined'
+                inputProps={{
+                  ...params.inputProps,
+                  autoComplete: 'new-password', // disable autocomplete and autofill
+                }}
+              />
+            )}
+          />
         </Grid>
         <Grid item xs={6}>
           <AreaChart

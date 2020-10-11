@@ -1,3 +1,10 @@
 .summary-charts {
   margin-top: 13px;
+  &__country-autocomplete {
+    font-size: 15;
+    span: {
+      margin-right: 10;
+      font-size: 18;
+    }
+  }
 }
