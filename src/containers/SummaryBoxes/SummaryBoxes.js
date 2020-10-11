@@ -10,10 +10,10 @@ export const SummaryBoxes = (props) => {
         justifyContent='center'
         m={2}
         p={2}
-        bgcolor='background.paper'
+        bgcolor='transparent'
         textAlign='center'>
         <div>
-          <div>Coronavirus Cases</div>
+          <div className='summary-boxes--bold'>Coronavirus Cases</div>
           <Box
             p={2}
             m={2}
@@ -22,11 +22,13 @@ export const SummaryBoxes = (props) => {
             fontFamily='Arial'
             borderRadius='10px'
             color='#fff'>
-            <strong>Item 1</strong>
+            <span className='summary-boxes--bold'>
+              {props.summary?.Global?.TotalConfirmed}
+            </span>
           </Box>
         </div>
         <div>
-          <div>Deaths</div>
+          <div className='summary-boxes--bold'>Deaths</div>
           <Box
             p={2}
             m={2}
@@ -35,11 +37,13 @@ export const SummaryBoxes = (props) => {
             fontFamily='Arial'
             borderRadius='10px'
             color='#fff'>
-            <strong>Item 2</strong>
+            <span className='summary-boxes--bold'>
+              {props.summary?.Global?.TotalDeaths}
+            </span>
           </Box>
         </div>
         <div>
-          <div>Recovered</div>
+          <div className='summary-boxes--bold'>Recovered</div>
           <Box
             p={2}
             m={2}
@@ -47,8 +51,10 @@ export const SummaryBoxes = (props) => {
             bgcolor='#8cf2cd'
             fontFamily='Arial'
             borderRadius='10px'
-            color='#fff'>
-            <strong>Item 3</strong>
+            color='#00945e'>
+            <span className='summary-boxes--bold'>
+              {props.summary?.Global?.TotalRecovered}
+            </span>
           </Box>
         </div>
       </Box>

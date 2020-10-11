@@ -2,6 +2,9 @@ import React, { useEffect } from 'react';
 import { Container, Divider, Box } from '@material-ui/core';
 import './styles.scss';
 import SummaryBoxes from '../SummaryBoxes';
+import SummaryCharts from '../SummaryCharts';
+import CountriesList from '../CountriesList';
+import * as dayjs from 'dayjs';
 
 export const Home = (props) => {
   useEffect(() => {
@@ -15,12 +18,14 @@ export const Home = (props) => {
           COVID-19 CORONAVIRUS PANDEMIC
         </h2>
         <div className='home__red-title'>
-          Last updated: {props.summary?.Date}. Total:{' '}
-          {props.summary?.Global?.TotalConfirmed}
+          Last updated: {dayjs(props.summary?.Date).format('MMM-DD-YYYY HH:mm')}
+          . Total: {props.summary?.Global?.TotalConfirmed}
         </div>
         <Divider variant='middle' />
-        <SummaryBoxes {...props} />
+        <SummaryBoxes summary={props.summary} />
         <Divider variant='middle' />
+        <SummaryCharts summary={props.summary} />
+        <CountriesList countries={props.summary.Countries} />
       </Container>
     </div>
   );

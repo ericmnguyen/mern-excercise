@@ -15,4 +15,7 @@ body {
   position: relative;
   height: 98vh;
   background: linear-gradient(to top right, #0066cc 0%, #00cc66 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }

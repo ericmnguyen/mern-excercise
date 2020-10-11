@@ -1,12 +1,14 @@
 import App from 'next/app';
 import withRedux from 'next-redux-wrapper';
 import { Provider } from 'react-redux';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import { store } from '../src/stores';
 import '../styles/global.scss';
 
 export default function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store}>
+      <CssBaseline />
       <Component {...pageProps} />
     </Provider>
   );
