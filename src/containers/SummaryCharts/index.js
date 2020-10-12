@@ -1,18 +1,19 @@
 import { connect } from 'react-redux';
 import { SummaryCharts } from './SummaryCharts';
-import {
-  getDailyCountry,
-  getDailyTotals,
-} from '../../actions/summaryChartsAction';
+import { getTotalCasesDaily } from '../../actions/homeAction';
 import './styles.scss';
 
-const mapStateToProps = ({ homeReducer: { summary } }) => ({
+const mapStateToProps = ({
+  homeReducer: { summary, dailyCasesInfo, dailyCuredInfo, dailyDeathInfo },
+}) => ({
   summary,
+  dailyCasesInfo,
+  dailyCuredInfo,
+  dailyDeathInfo,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getDailyTotals: (params) => dispatch(getDailyTotals(params)),
-  getDailyCountry: (params) => dispatch(getDailyCountry(params)),
+  getTotalCasesDaily: () => dispatch(getTotalCasesDaily()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SummaryCharts);

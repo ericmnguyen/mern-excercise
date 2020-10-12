@@ -1,5 +1,7 @@
 .countries-list {
   .countries-table {
-    height: 500px;
+    min-height: 120px;
+    max-height: 500px;
   }
+  margin: 21px;
 }

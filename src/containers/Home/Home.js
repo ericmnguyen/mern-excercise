@@ -25,6 +25,7 @@ export const Home = (props) => {
         <SummaryBoxes summary={props.summary} />
         <Divider variant='middle' />
         <SummaryCharts summary={props.summary} />
+        <Divider variant='middle' />
         <CountriesList countries={props.summary.Countries} />
       </Container>
     </div>

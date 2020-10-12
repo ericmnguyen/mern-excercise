@@ -1,4 +1,4 @@
-import { takeEvery, takeLatest, put, call } from 'redux-saga/effects';
+import { takeEvery, takeLatest, put, call, all } from 'redux-saga/effects';
 import { getAPI, postAPI, basePath } from '../utils/appRequest';
 import * as action from '../actions/homeAction';
 
@@ -15,7 +15,28 @@ export function* getSummary({ params }) {
   }
 }
 
+export function* getTotalCasesDaily() {
+  const totalCasesUrl = `https://covid19-update-api.herokuapp.com/api/v1/cases/graphs/dailyCases`;
+  const totalCuredUrl = `https://covid19-update-api.herokuapp.com/api/v1/cases/graphs/dailyCured`;
+  const totalDeathUrl = `https://covid19-update-api.herokuapp.com/api/v1/death/graph/dailyDeaths`;
+  try {
+    const [res1, res2, res3] = yield all([
+      call(getAPI, totalCasesUrl),
+      call(getAPI, totalCuredUrl),
+      call(getAPI, totalDeathUrl),
+    ]);
+    if (res1 && res2 && res3) {
+      yield put(action.getTotalCasesDailySuccess(res1.data));
+      yield put(action.getTotalCuredDailySuccess(res2.data));
+      yield put(action.getTotalDeathDailySuccess(res3.data));
+    }
+  } catch (error) {
+    yield put({ type: 'GET_TOTAL_CASES_DAILY_FAIL', error });
+  }
+}
+
 // use them in parallel
 export function* homeWatcher() {
   yield takeLatest('GET_SUMMARY', getSummary);
+  yield takeLatest('GET_TOTAL_CASES_DAILY', getTotalCasesDaily);
 }

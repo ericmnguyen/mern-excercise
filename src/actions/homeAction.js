@@ -8,3 +8,19 @@ export function getSummarySuccess(payload) {
     data: payload,
   };
 }
+
+export function getTotalCasesDaily() {
+  return { type: 'GET_TOTAL_CASES_DAILY' };
+}
+
+export function getTotalCasesDailySuccess(data) {
+  return { type: 'GET_TOTAL_CASES_DAILY_SUCCESS', data };
+}
+
+export function getTotalCuredDailySuccess(data) {
+  return { type: 'GET_TOTAL_CURED_DAILY_SUCCESS', data };
+}
+
+export function getTotalDeathDailySuccess(data) {
+  return { type: 'GET_TOTAL_DEATH_DAILY_SUCCESS', data };
+}
