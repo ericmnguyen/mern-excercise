@@ -10,12 +10,25 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
+import { Chart } from 'react-google-charts';
 import './styles.scss';
 
 export const SummaryCharts = (props) => {
   const { categories, data: total } = props.dailyCasesInfo.graph;
   const { data: cured } = props.dailyCuredInfo.graph;
   const { data: death } = props.dailyDeathInfo.graph;
+  let countryList = [['Country code', 'Country', 'Total cases']];
+  if (props.summary?.Countries) {
+    for (let i = 0; i < props.summary.Countries.length; i += 1) {
+      const country = [
+        props.summary.Countries[i].CountryCode,
+        props.summary.Countries[i].Country,
+        props.summary.Countries[i].TotalConfirmed,
+      ];
+      countryList.push(country);
+    }
+  }
+  console.log(countryList);
   const dataChart = [
     {
       name: categories[categories.length - 6],
@@ -61,7 +74,24 @@ export const SummaryCharts = (props) => {
     <div className='summary-charts'>
       <Grid container spacing={3}>
         <Grid item xs={6}>
-          abc
+          <div className={'geo-chart-container'}>
+            <Chart
+              width={'500px'}
+              height={'300px'}
+              chartType='GeoChart'
+              data={countryList}
+              options={{
+                colorAxis: { colors: ['#8cf2cd', '#f8d694', '#e31b23'] },
+                backgroundColor: 'transparent',
+                datalessRegionColor: '#f8bbd0',
+                defaultColor: '#f5f5f5',
+              }}
+              // Note: you will need to get a mapsApiKey for your project.
+              // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+              mapsApiKey='AIzaSyDKQikT64z9InVhNBfkmc2Ri0tLQwIEaAU'
+              rootProps={{ 'data-testid': '1' }}
+            />
+          </div>
         </Grid>
         <Grid item xs={6}>
           <ResponsiveContainer width='100%' height={400}>
