@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const axios = require('axios');
+const serverless = require('serverless-http');
 
 const exercisesRouter = require('./routes/exercises');
 const usersRouter = require('./routes/users');
@@ -48,3 +49,5 @@ app.post('/login', (req, res) => res.send());
 app.listen(port, () => {
   console.log('Server is running on port: ', port);
 });
+
+module.exports.handler = serverless(app);
