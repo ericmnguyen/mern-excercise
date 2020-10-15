@@ -1,0 +1,63 @@
+{
+  "name": "movies",
+  "version": "1.0.0",
+  "description": "Movie Collection",
+  "main": "index.js",
+  "proxy": "http://localhost:5000",
+  "dependencies": {
+    "@material-ui/core": "^4.7.2",
+    "@material-ui/icons": "^4.5.1",
+    "@material-ui/lab": "^4.0.0-alpha.56",
+    "@zeit/next-css": "^1.0.1",
+    "@zeit/next-sass": "^1.0.1",
+    "axios": "^0.20.0",
+    "dayjs": "^1.9.1",
+    "formik": "^2.0.7",
+    "immutable": "^4.0.0-rc.12",
+    "jwt-decode": "^2.2.0",
+    "lodash": "^4.17.15",
+    "next": "^9.5.3",
+    "next-images": "^1.6.0",
+    "next-redux-saga": "^4.1.2",
+    "next-redux-wrapper": "^6.0.2",
+    "node-sass": "^4.14.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-google-charts": "^3.0.15",
+    "react-redux": "^7.2.1",
+    "recharts": "^1.8.5",
+    "recompose": "^0.30.0",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-saga": "^1.1.3",
+    "reselect": "^4.0.0",
+    "yarn": "^1.22.10",
+    "yup": "^0.29.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "clean": "npm run test:clean && npm run build:clean",
+    "generate": "plop --plopfile internals/generators/index.js",
+    "lint": "npm run lint:js",
+    "lint:eslint": "eslint --ignore-path .gitignore",
+    "lint:eslint:fix": "eslint --ignore-path .gitignore --ignore-pattern internals/scripts --fix",
+    "eslint:fix": "eslint -- . --ignore-path .gitignore --fix",
+    "lint:js": "npm run lint:eslint -- . ",
+    "pretest": "npm run test:clean && npm run lint",
+    "test:clean": "rimraf ./coverage",
+    "test": "cross-env NODE_ENV=test jest --coverage",
+    "test:watch": "cross-env NODE_ENV=test jest --watchAll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nathanmng/mern-excercise.git"
+  },
+  "author": "Nhat Nguyen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nathanmng/mern-excercise/issues"
+  },
+  "homepage": "https://github.com/nathanmng/mern-excercise#readme"
+}

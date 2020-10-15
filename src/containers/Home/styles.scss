@@ -1,0 +1,20 @@
+.home {
+  background-color: rgb(238, 238, 238);
+  margin: 13px 0px;
+  padding: 13px 0px 21px 0px;
+  width: 90%;
+  height: auto;
+  border-radius: 30px;
+  &__title {
+    font: bold;
+    font-family: cursive;
+    &--center {
+      text-align: center;
+    }
+  }
+  &__red-title {
+    text-align: center;
+    margin-bottom: 13px;
+    color: rgb(151, 127, 142);
+  }
+}

@@ -1,0 +1,21 @@
+:root {
+  --color0: #e0f2f1;
+  --color1: #b2dfdb;
+  --color2: #80cbc4;
+  --color3: #4db6ac;
+  --color4: #26a69a;
+  --color5: #009688;
+  --color6: #00897b;
+  --color7: #00796b;
+  --color8: #00695c;
+  --color9: #004d40;
+}
+
+body {
+  position: relative;
+  height: 98vh;
+  background: linear-gradient(to top right, #0066cc 0%, #00cc66 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
