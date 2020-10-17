@@ -13,7 +13,6 @@ export const Home = (props) => {
 
   return (
     <div className='home'>
-      <div>{process.env.NODE_ENV}</div>
       <Container>
         <h2 className='home__title home__title--center'>
           COVID-19 CORONAVIRUS PANDEMIC
