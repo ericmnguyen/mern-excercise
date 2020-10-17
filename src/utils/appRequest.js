@@ -1,6 +1,9 @@
 import axios from 'axios';
 
-export const basePath = 'http://localhost:5000';
+export const basePath =
+  process.env.NODE_ENV === 'production'
+    ? 'https://corona-tracking-api.herokuapp.com/'
+    : 'http://localhost:5000';
 
 export function getAPI(url, params = {}, headers = {}) {
   return axios.request({
