@@ -44,8 +44,6 @@ export const Login = (props) => {
   const wrongPasswordTxt = 'Email/password is incorrect. Please try again.';
   return (
     <div className='login'>
-      {console.log('process', process.env.NODE_ENV)}
-      {process.env.NODE_ENV}
       <Formik
         initialValues={{
           email: '',
