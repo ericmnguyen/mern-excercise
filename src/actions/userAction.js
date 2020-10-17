@@ -18,6 +18,10 @@ export function getUserInfoSuccess(data) {
   return { type: 'GET_USER_INFO_SUCCESS', data };
 }
 
+export function getUserInfoFail(err) {
+  return { type: 'GET_USER_INFO_FAIL', err };
+}
+
 export function fieldVerifying(payload) {
   return { type: 'FIELD_VERIFYING', payload };
 }

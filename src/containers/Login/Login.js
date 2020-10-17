@@ -1,21 +1,10 @@
-import React, { Component, useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { createStructuredSelector } from 'reselect';
+import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import {
-  TextField,
-  Button,
-  Grid,
-  Typography,
-  InputAdornment,
-} from '@material-ui/core';
+import { TextField, Button, Grid, InputAdornment } from '@material-ui/core';
 import InputIcon from '@material-ui/icons/Input';
 import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { Formik, Form, Field } from 'formik';
-import { createStore, applyMiddleware } from 'redux';
-import createSagaMiddleware from 'redux-saga';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import './styles.scss';
 

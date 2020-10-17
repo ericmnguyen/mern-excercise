@@ -3,6 +3,7 @@ const initialState = {
   password: '',
   userInfo: {},
   isVerify: true,
+  error: '',
 };
 
 export const userReducer = (state = initialState, action) => {
@@ -16,7 +17,7 @@ export const userReducer = (state = initialState, action) => {
         loadingLogin: false,
       };
     case 'GET_USER_INFO_FAIL':
-      return state;
+      return { ...state, error: action.err };
     case 'FIELD_VERIFYING':
       console.log('action', action.payload);
       return { ...state, isVerify: action.payload };

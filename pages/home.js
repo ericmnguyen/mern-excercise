@@ -1,7 +1,7 @@
 import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import Menu from '../src/containers/Menu';
 import Home from '../src/containers/Home';
-import Footer from '../src/containers/Footer';
 
 export default function Index() {
   return (
@@ -12,8 +12,8 @@ export default function Index() {
           justifyContent: 'center',
         }}>
         <CssBaseline />
+        <Menu />
         <Home />
-        <Footer />
       </div>
     </div>
   );

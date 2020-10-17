@@ -15,11 +15,11 @@ export const Home = (props) => {
     <div className='home'>
       <Container>
         <h2 className='home__title home__title--center'>
-          COVID-19 CORONAVIRUS PANDEMIC
+          COVID-19 CORONAVIRUS PANDEMIC SUMMARY
         </h2>
         <div className='home__red-title'>
           Last updated: {dayjs(props.summary?.Date).format('MMM-DD-YYYY HH:mm')}
-          . Total: {props.summary?.Global?.TotalConfirmed}
+          . Total: {props.summary?.Global?.TotalConfirmed?.toLocaleString()}
         </div>
         <Divider variant='middle' />
         <SummaryBoxes summary={props.summary} />
