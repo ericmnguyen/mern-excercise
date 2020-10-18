@@ -23,7 +23,7 @@ export const SummaryBoxes = (props) => {
             borderRadius='10px'
             color='#fff'>
             <span className='summary-boxes--bold'>
-              {props.summary?.Global?.TotalConfirmed}
+              {props.summary?.Global?.TotalConfirmed?.toLocaleString()}
             </span>
           </Box>
         </div>
@@ -38,7 +38,7 @@ export const SummaryBoxes = (props) => {
             borderRadius='10px'
             color='#fff'>
             <span className='summary-boxes--bold'>
-              {props.summary?.Global?.TotalDeaths}
+              {props.summary?.Global?.TotalDeaths?.toLocaleString()}
             </span>
           </Box>
         </div>
@@ -53,7 +53,7 @@ export const SummaryBoxes = (props) => {
             borderRadius='10px'
             color='#00945e'>
             <span className='summary-boxes--bold'>
-              {props.summary?.Global?.TotalRecovered}
+              {props.summary?.Global?.TotalRecovered?.toLocaleString()}
             </span>
           </Box>
         </div>

@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
-import { Login } from './Login';
-import { withFormik } from 'formik';
-import { setUsername, getUserInfo, clearUser } from '../../actions/userAction';
+import { Menu } from './Menu';
+import { setUsername, getUserInfo } from '../../actions/userAction';
 import './styles.scss';
 
 const mapStateToProps = ({
@@ -15,7 +14,6 @@ const mapStateToProps = ({
 const mapDispatchToProps = (dispatch) => ({
   setUsername: (username) => dispatch(setUsername(username)),
   getUserInfo: (userInfo) => dispatch(getUserInfo(userInfo)),
-  cleanUp: () => dispatch(clearUser()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);
