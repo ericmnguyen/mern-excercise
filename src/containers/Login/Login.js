@@ -14,7 +14,12 @@ export const Login = (props) => {
   const router = useRouter();
 
   useEffect(() => {
-    if (props.userInfo?.email) {
+    props.cleanUp();
+  }, []);
+
+  useEffect(() => {
+    if (props.userInfo.token) {
+      localStorage.setItem('token', props.userInfo.token);
       router.push('/home');
     }
   }, [props.userInfo]);

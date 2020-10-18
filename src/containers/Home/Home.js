@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Container, Divider, Box } from '@material-ui/core';
+import { useRouter } from 'next/router';
 import './styles.scss';
 import SummaryBoxes from '../SummaryBoxes';
 import SummaryCharts from '../SummaryCharts';
@@ -7,7 +8,13 @@ import CountriesList from '../CountriesList';
 import * as dayjs from 'dayjs';
 
 export const Home = (props) => {
+  const router = useRouter();
+
   useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      router.replace('/');
+    }
     props.getSummary();
   }, []);
 

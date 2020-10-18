@@ -1,6 +1,4 @@
 const initialState = {
-  userName: '',
-  password: '',
   userInfo: {},
   isVerify: true,
   error: '',
@@ -19,7 +17,7 @@ export const userReducer = (state = initialState, action) => {
         loadingLogin: false,
       };
     case 'GET_USER_INFO_FAIL':
-      return { ...state, error: action.err };
+      return { ...state, error: action.err, loadingLogin: false };
     case 'USER_REGISTER_SUCCESS':
       return { ...state, registerSuccess: true };
     case 'USER_REGISTER_FAIL':
@@ -27,7 +25,14 @@ export const userReducer = (state = initialState, action) => {
     case 'FIELD_VERIFYING':
       return { ...state, isVerify: action.payload };
     case 'CLEAN_UP':
-      return { ...state, registerSuccess: false, registerMessage: '' };
+      localStorage.clear();
+      return {
+        ...state,
+        registerSuccess: false,
+        registerMessage: '',
+        userInfo: {},
+        error: '',
+      };
     default:
       return state;
   }
