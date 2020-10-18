@@ -22,6 +22,22 @@ export function getUserInfoFail(err) {
   return { type: 'GET_USER_INFO_FAIL', err };
 }
 
+export function userRegister(params) {
+  return { type: 'USER_REGISTER', params };
+}
+
+export function userRegisterSuccess(data) {
+  return { type: 'USER_REGISTER_SUCCESS', data };
+}
+
+export function userRegisterFail(err) {
+  return { type: 'USER_REGISTER_FAIL', err };
+}
+
 export function fieldVerifying(payload) {
   return { type: 'FIELD_VERIFYING', payload };
+}
+
+export function clearUser() {
+  return { type: 'CLEAN_UP' };
 }
