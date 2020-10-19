@@ -23,7 +23,6 @@ export function* userRegister({ params }) {
   const url = `${basePath}/users/add`;
   try {
     const result = yield call(postAPI, url, params);
-    console.log('result', result);
     if (result.data && result.status === 201) {
       yield put(action.userRegisterSuccess(result.data));
     } else {

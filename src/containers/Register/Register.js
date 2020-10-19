@@ -31,7 +31,6 @@ export const Register = (props) => {
   const handleRegister = (value) => {
     const { userRegister } = props;
     userRegister(value);
-    console.log(value);
   };
 
   const handleCancel = () => {

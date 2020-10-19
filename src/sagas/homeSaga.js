@@ -4,9 +4,9 @@ import * as action from '../actions/homeAction';
 
 // FETCH_USERS
 export function* getSummary({ params }) {
-  const url = `https://api.covid19api.com/summary`;
+  const url = `${basePath}/summary`;
   try {
-    const result = yield call(getAPI, url, params);
+    const result = yield call(postAPI, url, params);
     if (result) {
       yield put(action.getSummarySuccess(result.data));
     }

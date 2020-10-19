@@ -80,7 +80,6 @@ export const CountriesList = (props) => {
   ];
 
   const handleChangePage = (event, newPage) => {
-    console.log('chay', newPage);
     setPage(newPage);
   };
 
