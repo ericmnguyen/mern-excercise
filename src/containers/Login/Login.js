@@ -5,6 +5,7 @@ import InputIcon from '@material-ui/icons/Input';
 import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import SendIcon from '@material-ui/icons/Send';
+import { WaveTopBottomLoading } from 'react-loadingg';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import Link from 'next/link';
@@ -18,7 +19,7 @@ export const Login = (props) => {
   }, []);
 
   useEffect(() => {
-    if (props.userInfo.token) {
+    if (props.userInfo?.token) {
       localStorage.setItem('token', props.userInfo.token);
       router.push('/home');
     }
@@ -121,20 +122,26 @@ export const Login = (props) => {
                   )}
                 </Grid>
                 <Grid item xs={12}>
-                  <Button
-                    type='submit'
-                    className='login__login-button'
-                    variant='contained'
-                    endIcon={<SendIcon />}
-                    disabled={props.loadingLogin}
-                    color='primary'>
-                    Login
-                  </Button>
-                  <p>
-                    <Link href='/register'>
-                      <a>You don't have an account?</a>
-                    </Link>
-                  </p>
+                  {props.isLoading ? (
+                    <WaveTopBottomLoading style={{ margin: 'auto' }} />
+                  ) : (
+                    <>
+                      <Button
+                        type='submit'
+                        className='login__login-button'
+                        variant='contained'
+                        endIcon={<SendIcon />}
+                        disabled={props.loadingLogin}
+                        color='primary'>
+                        Login
+                      </Button>
+                      <p>
+                        <Link href='/register'>
+                          <a>You don't have an account?</a>
+                        </Link>
+                      </p>
+                    </>
+                  )}
                 </Grid>
               </Grid>
             </Form>

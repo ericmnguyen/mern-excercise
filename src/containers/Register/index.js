@@ -4,10 +4,11 @@ import { userRegister, clearUser } from '../../actions/userAction';
 import './styles.scss';
 
 const mapStateToProps = ({
-  userReducer: { registerSuccess, registerMessage },
+  userReducer: { registerSuccess, registerMessage, isLoading },
 }) => ({
   registerSuccess,
   registerMessage,
+  isLoading,
 });
 
 const mapDispatchToProps = (dispatch) => ({

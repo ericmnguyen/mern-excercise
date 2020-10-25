@@ -11,7 +11,9 @@ export function* getSummary({ params }) {
   };
   try {
     const result = yield call(postAPI, url, params, headers);
-    if (result) {
+    if (result === 403) {
+      yield put({ type: 'GET_SUMMARY_FAIL', error: result });
+    } else {
       yield put(action.getSummarySuccess(result.data));
     }
   } catch (error) {

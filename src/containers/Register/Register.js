@@ -5,6 +5,7 @@ import InputIcon from '@material-ui/icons/Input';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { WaveTopBottomLoading } from 'react-loadingg';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import './styles.scss';
@@ -159,6 +160,10 @@ export const Register = (props) => {
                       Redirect to Login
                     </Button>
                     <p className='register__success'>You're now our member!</p>
+                  </Grid>
+                ) : props.isLoading ? (
+                  <Grid item xs={12}>
+                    <WaveTopBottomLoading style={{ margin: 'auto' }} />
                   </Grid>
                 ) : (
                   <>

@@ -9,7 +9,6 @@ import CountriesList from '../CountriesList';
 import * as dayjs from 'dayjs';
 
 export const Home = (props) => {
-  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
@@ -20,23 +19,16 @@ export const Home = (props) => {
     props.getSummary();
   }, []);
 
-  // useEffect(() => {
-  //   props.cleanUp();
-  //   router.replace('/');
-  // }, [props.summaryError]);
-
   useEffect(() => {
-    if (props.summary) {
-      setIsLoading(false);
-    } else {
-      setIsLoading(true);
+    if (props.summaryError === 403) {
+      router.replace('/');
     }
-  }, [props.summary]);
+  }, [props.summaryError]);
 
   return (
     <div className='home'>
-      {isLoading ? (
-        <WaveTopBottomLoading />
+      {props.isLoading ? (
+        <WaveTopBottomLoading style={{ margin: '100px auto' }} size='large' />
       ) : (
         <Container>
           <h2 className='home__title home__title--center'>
@@ -52,7 +44,7 @@ export const Home = (props) => {
           <Divider variant='middle' />
           <SummaryCharts summary={props.summary} />
           <Divider variant='middle' />
-          <CountriesList countries={props.summary.Countries} />
+          <CountriesList countries={props.summary?.Countries} />
         </Container>
       )}
     </div>

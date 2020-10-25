@@ -22,5 +22,10 @@ export function postAPI(url = '', authParams = {}, headers = {}) {
       data: authParams,
       headers,
     })
-    .then((data) => data);
+    .then((data) => data)
+    .catch((error) => {
+      if (error.response) {
+        return error.response.status;
+      }
+    });
 }

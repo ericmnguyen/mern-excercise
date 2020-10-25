@@ -5,11 +5,12 @@ import { setUsername, getUserInfo, clearUser } from '../../actions/userAction';
 import './styles.scss';
 
 const mapStateToProps = ({
-  userReducer: { isVerify, loadingLogin, userInfo },
+  userReducer: { isVerify, loadingLogin, userInfo, isLoading },
 }) => ({
   isVerify,
   loadingLogin,
   userInfo,
+  isLoading,
 });
 
 const mapDispatchToProps = (dispatch) => ({
