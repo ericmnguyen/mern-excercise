@@ -14,12 +14,18 @@ export function getAPI(url, params = {}, headers = {}) {
   });
 }
 
-export function postAPI(url = '', authParams = {}) {
+export function postAPI(url = '', authParams = {}, headers = {}) {
   return axios
     .request({
       method: 'POST',
       url,
       data: authParams,
+      headers,
     })
-    .then((data) => data);
+    .then((data) => data)
+    .catch((error) => {
+      if (error.response) {
+        return error.response.status;
+      }
+    });
 }

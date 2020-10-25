@@ -80,7 +80,6 @@ export const CountriesList = (props) => {
   ];
 
   const handleChangePage = (event, newPage) => {
-    console.log('chay', newPage);
     setPage(newPage);
   };
 
@@ -143,7 +142,7 @@ export const CountriesList = (props) => {
                       hover
                       role='checkbox'
                       tabIndex={-1}
-                      key={row.code}>
+                      key={row.CountryCode}>
                       {columns.map((column) => {
                         const value = row[column.id];
                         return (

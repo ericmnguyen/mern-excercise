@@ -9,6 +9,13 @@ export function getSummarySuccess(payload) {
   };
 }
 
+export function getSummaryFail(error) {
+  return {
+    type: 'GET_SUMMARY_FAIL',
+    error,
+  };
+}
+
 export function getTotalCasesDaily() {
   return { type: 'GET_TOTAL_CASES_DAILY' };
 }
@@ -23,4 +30,8 @@ export function getTotalCuredDailySuccess(data) {
 
 export function getTotalDeathDailySuccess(data) {
   return { type: 'GET_TOTAL_DEATH_DAILY_SUCCESS', data };
+}
+
+export function cleanUp() {
+  return { type: 'CLEAN_UP' };
 }

@@ -4,14 +4,20 @@ import * as action from '../actions/homeAction';
 
 // FETCH_USERS
 export function* getSummary({ params }) {
-  const url = `https://api.covid19api.com/summary`;
+  const url = `${basePath}/summary`;
+  const token = localStorage.getItem('token');
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
   try {
-    const result = yield call(getAPI, url, params);
-    if (result) {
+    const result = yield call(postAPI, url, params, headers);
+    if (result === 403) {
+      yield put({ type: 'GET_SUMMARY_FAIL', error: result });
+    } else {
       yield put(action.getSummarySuccess(result.data));
     }
   } catch (error) {
-    yield put({ type: 'GET_USER_INFO_FAIL', error });
+    yield put({ type: 'GET_SUMMARY_FAIL', error });
   }
 }
 
